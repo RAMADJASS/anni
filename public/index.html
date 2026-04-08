@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anissath — 20 Printemps ❤️</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --deep-blue: #021a33;
+            --ocean-blue: #0077b6;
+            --sky-blue: #ade8f4;
+            --glass-blue: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background: var(--deep-blue);
+            color: #f1f1f1;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #001219 0%, #002855 100%);
+            z-index: -1;
+        }
+
+        .glass-card {
+            background: var(--glass-blue);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(173, 232, 244, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            transition: 0.5s ease;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to bottom, #fff, var(--sky-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .age-text {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--sky-blue);
+            opacity: 0.9;
+        }
+
+        .countdown {
+            font-weight: 200;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            padding: 10px 40px;
+            border-bottom: 1px solid var(--ocean-blue);
+            display: inline-block;
+        }
+
+        /* GALERIE PHOTOS */
+        .art-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .art-frame img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        .art-frame:hover {
+            transform: translateY(-10px);
+            border-color: var(--sky-blue);
+            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.3);
+        }
+
+        /* SECTION VIDEO */
+        .video-container {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* TEXTE AMOUR */
+        #loveText {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: auto;
+            border-left: 2px solid var(--sky-blue);
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        /* BOUTONS */
+        .btn-blue {
+            background: transparent;
+            border: 1px solid var(--ocean-blue);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 0px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.5s;
+        }
+
+        .btn-blue:hover {
+            background: var(--ocean-blue);
+            box-shadow: 0 0 25px var(--ocean-blue);
+            color: white;
+        }
+
+        #giftScreen {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: var(--deep-blue); z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .heart {
+            position: fixed; pointer-events: none; opacity: 0.5;
+            filter: drop-shadow(0 0 5px var(--ocean-blue));
+        }
+
+        footer {
+            padding: 80px 0;
+            opacity: 0.5;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+
+<div id="giftScreen">
+    <div class="text-center">
+        <h2 class="age-text mb-5">Pour l'incroyable Anissath</h2>
+        <button id="openGift" class="btn-blue">Découvrir sa surprise 💎</button>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <span class="age-text">Le Bel Âge de 20 Ans</span>
+        <h1>Joyeux Anniversaire Anissath</h1>
+        <div id="countdown" class="countdown"></div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="glass-card">
+        <h2 class="age-text text-center mb-5">Une pensée pour toi</h2>
+        <p id="loveText"></p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="age-text text-center mb-5">Ta Lumière en Images</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani1.jpg"></div></div>
+        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani2.jpg"></div></div>
+        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani3.jpg"></div></div>
+        <div class="col-md-5 col-sm-6"><div class="art-frame"><img src="images/ani4.jpg"></div></div>
+        <div class="col-md-5 col-sm-6"><div class="art-frame"><img src="images/ani5.jpg"></div></div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="age-text text-center mb-5">Instants de Bonheur</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6">
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/video1.mp4" type="video/mp4">
+                    Ton navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/video2.mp4" type="video/mp4">
+                    Ton navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5 text-center">
+    <div class="row g-3 justify-content-center">
+        <div class="col-md-3"><button class="btn-blue w-100" onclick="showLetter(1)">Éclat</button></div>
+        <div class="col-md-3"><button class="btn-blue w-100" onclick="showLetter(2)">Avenir</button></div>
+        <div class="col-md-3"><button class="btn-blue w-100" onclick="showLetter(3)">Bonheur</button></div>
+    </div>
+    <div id="letterContent" class="glass-card mt-5" style="display:none; font-style: italic;"></div>
+</section>
+
+<section class="text-center py-5">
+    <h2 class="age-text" style="font-size: 2.5rem; letter-spacing: 15px; opacity: 0.3;">ANISSATH</h2>
+</section>
+
+<footer class="text-center">
+    <p>CÉLÉBRATION POUR ANISSATH — 19 AVRIL 2026</p>
+    <p>CONÇU AVEC AMOUR PAR RAMANDAN ADJASSA</p>
+</footer>
+
+<audio id="music" loop>
+    <source src="music/anniv.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+// Ouverture
+document.getElementById("openGift").addEventListener("click", function(){
+    document.getElementById("giftScreen").style.transition = "1.5s ease-in-out";
+    document.getElementById("giftScreen").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("giftScreen").style.display = "none";
+        document.getElementById("music").play();
+        writeText();
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#0077b6', '#ade8f4', '#ffffff']
+        });
+    }, 1500);
+});
+
+// Texte Progressif
+const fullText = `Anissath, 20 ans est un cap magnifique, le début d'une aventure extraordinaire. Que cette nouvelle décennie t'apporte autant de joie que tu en distribues autour de toi. Tu es une personne rare, et ce jour est à l'image de ton éclat : unique. Joyeux anniversaire, Anissath 💙`;
+let index = 0;
+function writeText(){
+    if(index < fullText.length){
+        document.getElementById("loveText").innerHTML += fullText.charAt(index);
+        index++;
+        setTimeout(writeText, 40);
+    }
+}
+
+// Lettres
+function showLetter(n){
+    const letters = {
+        1: "Ton sourire illumine tout ce qui t'entoure, ne change jamais.",
+        2: "Que tes 20 ans soient le tremplin vers tes rêves les plus fous.",
+        3: "Le bonheur te va si bien. Profite de chaque seconde de ta journée."
+    };
+    const box = document.getElementById("letterContent");
+    box.style.display = "block";
+    box.innerHTML = `<p style="font-size:1.2rem;">"${letters[n]}"</p>`;
+}
+
+// Countdown (19 Avril 2026)
+const bday = new Date("2026-04-19 00:00:00").getTime();
+setInterval(function(){
+    const now = new Date().getTime();
+    const dist = bday - now;
+    const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+    const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((dist % (1000 * 60)) / 1000);
+    document.getElementById("countdown").innerHTML = `${d}j : ${h}h : ${m}m : ${s}s`;
+}, 1000);
+
+// Bulles/Coeurs bleus
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💙";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = (Math.random() * 10 + 10) + "px";
+    heart.style.animation = `float ${Math.random() * 3 + 5}s linear forwards`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 700);
+
+const style = document.createElement('style');
+style.innerHTML = `@keyframes float { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
