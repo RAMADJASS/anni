@@ -76,13 +76,20 @@
             display: inline-block;
         }
 
-        /* GALERIE PHOTOS */
+        /* GALERIE PHOTOS AVEC LÉGENDES */
+        .photo-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 22px;
+            transition: 0.5s;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         .art-frame {
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 15px;
         }
 
         .art-frame img {
@@ -92,10 +99,22 @@
             transition: 0.8s;
         }
 
-        .art-frame:hover {
+        .photo-card:hover {
             transform: translateY(-10px);
             border-color: var(--sky-blue);
-            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.2);
+        }
+
+        .photo-card:hover img { transform: scale(1.05); }
+
+        .photo-msg {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--sky-blue);
+            text-align: center;
+            padding: 15px 5px 5px;
+            opacity: 0.8;
         }
 
         /* SECTION VIDEO */
@@ -105,18 +124,16 @@
             background: #000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 20px;
+            border: 1px solid rgba(173, 232, 244, 0.1);
         }
 
-        video {
-            width: 100%;
-            display: block;
-        }
+        video { width: 100%; display: block; }
 
         /* TEXTE AMOUR */
         #loveText {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.8;
             max-width: 800px;
             margin: auto;
@@ -193,11 +210,36 @@
 <section class="container py-5">
     <h2 class="age-text text-center mb-5">Ta Lumière en Images</h2>
     <div class="row g-4 justify-content-center">
-        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani1.jpg"></div></div>
-        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani2.jpg"></div></div>
-        <div class="col-md-4 col-sm-6"><div class="art-frame"><img src="images/ani3.jpg"></div></div>
-        <div class="col-md-5 col-sm-6"><div class="art-frame"><img src="images/ani4.jpg"></div></div>
-        <div class="col-md-5 col-sm-6"><div class="art-frame"><img src="images/ani5.jpg"></div></div>
+        <div class="col-md-4 col-sm-6">
+            <div class="photo-card">
+                <div class="art-frame"><img src="images/ani1.jpg"></div>
+                <p class="photo-msg">Ton regard, une fenêtre sur un monde plus beau. ✨</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="photo-card">
+                <div class="art-frame"><img src="images/ani2.jpg"></div>
+                <p class="photo-msg">La grâce incarnée pour tes 20 printemps. 💙</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="photo-card">
+                <div class="art-frame"><img src="images/ani3.jpg"></div>
+                <p class="photo-msg">Un sourire qui arrête le temps. 💎</p>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-6">
+            <div class="photo-card">
+                <div class="art-frame"><img src="images/ani4.jpg"></div>
+                <p class="photo-msg">Élégante et radieuse, tout simplement toi. 🌊</p>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-6">
+            <div class="photo-card">
+                <div class="art-frame"><img src="images/ani5.jpg"></div>
+                <p class="photo-msg">Le début d'une décennie merveilleuse. 🚀</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -272,7 +314,7 @@ function writeText(){
     if(index < fullText.length){
         document.getElementById("loveText").innerHTML += fullText.charAt(index);
         index++;
-        setTimeout(writeText, 40);
+        setTimeout(writeText, 45);
     }
 }
 
@@ -285,7 +327,8 @@ function showLetter(n){
     };
     const box = document.getElementById("letterContent");
     box.style.display = "block";
-    box.innerHTML = `<p style="font-size:1.2rem;">"${letters[n]}"</p>`;
+    box.innerHTML = `<p style="font-size:1.3rem;">"${letters[n]}"</p>`;
+    box.scrollIntoView({ behavior: 'smooth' });
 }
 
 // Countdown (19 Avril 2026)
@@ -300,19 +343,19 @@ setInterval(function(){
     document.getElementById("countdown").innerHTML = `${d}j : ${h}h : ${m}m : ${s}s`;
 }, 1000);
 
-// Bulles/Coeurs bleus
+// Bulles bleues
 function createHeart(){
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "💙";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.bottom = "-20px";
-    heart.style.fontSize = (Math.random() * 10 + 10) + "px";
+    heart.style.fontSize = (Math.random() * 12 + 10) + "px";
     heart.style.animation = `float ${Math.random() * 3 + 5}s linear forwards`;
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 6000);
 }
-setInterval(createHeart, 700);
+setInterval(createHeart, 800);
 
 const style = document.createElement('style');
 style.innerHTML = `@keyframes float { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }`;
